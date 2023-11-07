@@ -17,7 +17,7 @@ abstract class Generator implements SequenceGenerator {
     }
 
     @Override
-    public final BigDecimal getTerm(int i) {
+    public final BigDecimal getTerm(int i) {        
         if (i < 0) {
             throw new IllegalArgumentException();
         }

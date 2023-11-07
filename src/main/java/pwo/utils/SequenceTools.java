@@ -9,9 +9,12 @@ public class SequenceTools {
     private static String getTerms(SequenceGenerator sg,
             int from, int to, String sep) {
 
-        int i = from, stop = to, step = from > to ? -1 : 1;
+        int i = from, stop = to, step = 1;
+        //int i = from, stop = to, step = from > to ? -1 : 1;
+        
         String terms = "";
 
+        if(from<=to){
         while (true) {
             terms += sg.getTerm(i) + sep;
             if (i == stop) {
@@ -19,6 +22,20 @@ public class SequenceTools {
             }
             i += step;
         }
+        }
+        else
+        {
+            i = to;
+            stop = from;
+            while (true) {
+            terms = sg.getTerm(i) + sep + terms;
+            if (i == stop) {
+                return terms.trim();
+            }
+            i += step;
+        }
+        }
+        
     }
 
     public static String getTermsAsColumn(SequenceGenerator sg,
